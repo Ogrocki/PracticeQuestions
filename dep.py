@@ -1,12 +1,12 @@
-dep = {'A':['B','C'],'B':['C'], 'C':['E'], 'D':['A']}
-d0={}
-d1 = {'A':['B','C'],'B':['C'], 'C':['E'], 'D':['A'], 'E':['D']}
+d0 = {'A':['B','C'],'B':['C'], 'C':['E'], 'D':['A']}
+d1={}
+d2 = {'A':['B','C'],'B':['C'], 'C':['E'], 'D':['A'], 'E':['D']}
 
 def dept(dept):
 	# Add any elements that are not in keys
 	for ii in sum(list(dept.values()),[]):
 		if ii not in list(dept.keys()):
-			dep.update({ii:[]})
+			dept.update({ii:[]})
 
 	# Build my stack with all keys
 	stack = list(dept.keys())
@@ -24,12 +24,12 @@ def dept(dept):
 
 
 		# if there are values dependent on t
-		if dep[t]:
-			for i in dep[t]:
+		if dept[t]:
+			for i in dept[t]:
 				# if the dependent value is already in the order, remove it
-				if i in o: 	dep[t].remove(i)
+				if i in o: 	dept[t].remove(i)
 			# if we found something not in the order add it to our stack
-			if dep[t]: stack.insert(0,dep[t][0])
+			if dept[t]: stack.insert(0,dept[t][0])
 
 		#this has no dependents so add it to the order and delete it from the stack
 		if not dept[t]:
@@ -39,6 +39,6 @@ def dept(dept):
 
 	return o
 
-print(dept(dep))
 print(dept(d0))
 print(dept(d1))
+print(dept(d2))
