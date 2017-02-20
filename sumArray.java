@@ -7,7 +7,7 @@ public class sumArray {
 
 public static void main(String[] args) {
 	int[] num = {-1,2,3,4};
-	int[] b=sumA(num, 2);
+	int[] b=sumA(num, 0);
 	for(int xx=0; xx<b.length; xx++){
 			System.out.println(b[xx]);
 	}
@@ -15,6 +15,7 @@ public static void main(String[] args) {
 public static int[] sumA(int[] a, int i){
 	int[] temp = new int[a.length-(i-1)];
 	int sum=0;
+	if(i > a.length || i == 0) return temp;
 	for(int iii=0; iii<i; iii++){
 		sum+=a[iii];
 	}
